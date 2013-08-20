@@ -1,5 +1,5 @@
 // Width and height
-var w = 500;
+var w = 600;
 var h = 500;
 var barPadding = 2;
 
@@ -45,3 +45,35 @@ svg.selectAll("text")
     .attr("font-size", "1em")
     .attr("fill", "white")
     .attr("text-anchor", "middle");
+
+
+
+// Line graph
+var points = [
+    { x: 0,  y: 0  },
+    { x: 25, y: 0 },
+    { x: 75, y: 101 },
+    { x: 125, y: 173 },
+    { x: 175, y: 135 },
+    { x: 225,  y: 119  },
+    { x: 275, y: 50 },
+    { x: 325, y: 145 },
+    { x: 375, y: 123 },
+    { x: 425, y: 130 },
+    { x: 475, y: 54 },
+    { x: 525, y: 177 },
+    { x: 575, y: 145 },
+    { x: 600, y: 98 }
+]
+
+var lineFn = d3.svg.line()
+  .x(function(d) { return d.x })
+  .y(function(d) { return h-d.y })
+  .interpolate("cardinal")
+
+svg.append("path")
+          .style("fill", "none")
+          .style("stroke", "blue")
+          .style("stroke-width", 2)
+          .attr("d", lineFn(points))
+    

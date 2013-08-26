@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Hover Border</title>    
+    
+<style type="text/css">
+* {
+	font-family: sans-serif;
+}
+.image {
+	position: relative;
+	width: 365px;
+	height: 277px; 
+	
+}
+.image a:link, .image a:visited {
+	display: none;
+	position: absolute;
+	top: 5%;
+	left: 5%;
+	width: 90%;
+	height: 90%;
+	z-index: 5;
+	opacity: 0;
+	display: block;
+	color: white;
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: all 0.5s ease 0s;
+	-webkit-transition: all 0.5s ease 0s;
+}
+.image a:hover {
+	border:thin solid rgba(255, 255, 255, .5);
+	background-color: rgba(255, 255, 255, .1);
+	opacity: 1;
+	transition: all 0.5s ease 0s;
+	-webkit-transition: all 0.5s ease 0s;
+}
+
+.image p {
+	margin: 65% 0 0 0;
+	text-align: center;
+}
+
+</style>
+</head>
+
+<body>
+ 
+<div class="image">
+
+	<img src="images/cat.jpg" alt="Grumpy Cat" />
+	<a href="#"><p>Happy Monday</p></a>
+
+</div>
+    
+    <p>CSS Hover Effect by adam</p>
+
+</body>
+</html>

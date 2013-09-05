@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Getting Started | Scatterplot</title>
+    
+    <script type="text/javascript" src="d3.min.js"></script>
+    
+    <style type="text/css">
+        * {font-family:sans-serif;}
+        p {color: #ccc; font-style: italic; border-bottom: 1px solid #ccc;}
+        
+    </style>
+    
+</head>
+<body>
+<p>Scatterplot</p>
+    
+<!-- Drawing with SVG and D3 -->
+   <script type="text/javascript">
+       
+       // Array of Arrays
+       var dataset = [
+                  [ 5,     20 ],
+                  [ 480,   90 ],
+                  [ 250,   50 ],
+                  [ 100,   33 ],
+                  [ 330,   95 ],
+                  [ 410,   12 ],
+                  [ 475,   44 ],
+                  [ 25,    67 ],
+                  [ 85,    21 ],
+                  [ 220,   88 ]
+              ];
+       var w = 500;
+       var h = 150;
+        
+        // Create SVG Element
+       var svg = d3.select("body")
+                .append("svg")
+                .attr("width", w)
+                .attr("height", h);
+       
+       
+       // Create Circles
+       svg.selectAll("circle")
+        .data(dataset)
+        .enter()
+        .append("circle")
+        .attr("cx", function(d) {
+            return d[0];
+            })
+       .attr("cy", function(d) {
+            return d[1];
+            })
+       .attr("r", function(d) {
+            return Math.sqrt(h-d[1]);
+            });
+       
+       
+       // Add some text labels
+       svg.selectAll("text")
+            .data(dataset)
+            .enter()
+            .append("text")
+            .text(function(d) {
+                return d[0] + " , " + d[1];  
+                })
+            .attr("x", function(d) {
+                return d[0];  
+                })
+            .attr("y", function(d) {
+                return d[1]; 
+                })
+            .attr("font-size", "11px")
+            .attr("fill", "orange");
+                
+       
+        </script> 
+    
+</body>
+</html>

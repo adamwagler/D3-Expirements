@@ -8,20 +8,53 @@
     
     <style type="text/css">
         * {font-family:sans-serif;}
-            
+        p {color: #ccc; font-style: italic; border-bottom: 1px solid #ccc;}
+        svg .box {
+            display:inline-block;
+        }
     </style>
     
 </head>
 <body>
-
+<p>Biking Mileage from October 2012 - September 2013</p>
+    
 <!-- Drawing with SVG and D3 -->
    <script type="text/javascript">
-            
-       var svg = d3.select("body").append("svg"; // makes a variable and appends it just before the closing of the body tag
-                                               
-        svg.attr("width", 500)
-            .attr("height", 50);
-                
+       
+       // var dataset = [ 5, 10, 15, 20, 25 ];
+       var dataset = [ 358, 262, 211, 103, 170, 175, 109, 408, 428, 414, 822, 391 ];
+       var w = 600;
+       var h = 150;
+       
+       // make the svg parts a var
+       var svg = d3.select("body")
+            .append("svg") 
+            .attr("width", w)
+            .attr("height", h);
+              
+       // uses var = svg then adds more to it also sets it to a var
+       var circles = svg.selectAll("circle") 
+            .data(dataset)
+            .enter()
+            .append("circle");
+       
+       circles.attr("cx", function(d, i) {
+                return (i * 40) + 25; // d is data, i is the index number 
+            })
+            .attr("cy", h/2) // centers the circle vertically
+            .attr("r", function(d) { 
+                return d/25;  // makes radius the data amount
+            })
+            //add colors / styles to circles
+            .attr("fill", "yellow")
+            .attr("stroke", "orange")
+            .attr("stroke-width", function(d) {
+                    return d/50; 
+            })
+            .attr("opacity", function(d) {
+                    var max = d3.max(dataset);
+                    return d/max;  
+            });
         </script> 
     
 </body>

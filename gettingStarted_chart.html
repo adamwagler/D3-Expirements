@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Getting Started</title>
+    
+    <script type="text/javascript" src="d3.min.js"></script>
+    
+    <style type="text/css">
+        * {font-family:sans-serif;}
+        div.bar {
+                display: inline-block;
+                width: 20px;
+                height: 75px;   /* We'll override this later */
+                background-color: teal;
+                margin: 1px;
+            }
+    </style>
+    
+</head>
+<body>
+
+<!-- Adding attr(), style() to begin visalizing data for bar chart -->
+   <script type="text/javascript">
+            var dataset = [ 25, 7, 5, 26, 11, 8, 25, 14, 23, 19,
+                            14, 11, 22, 29, 11, 13, 12, 17, 18, 10,
+                            24, 18, 25, 9, 3 ]; 
+            d3.select("body").selectAll("div")
+                .data(dataset) //counts number of data & gets values
+                .enter() // creates a placeholder for the number of values in dataset 
+                         // then references it for the next step
+                         // in this case creating P tags
+                         // This is essentially a loop to repeat the number of data we have
+                .append("div")
+                .attr("class", "bar")
+                .style("height", function(d) {
+                    var barHeight = d * 5; // scales up the bars
+                    return barHeight + "px";
+                
+                });
+                
+        </script>      
+    
+    
+</body>
+</html>

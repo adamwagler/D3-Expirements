@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Getting Started | SVG</title>
+    
+    <script type="text/javascript" src="d3.min.js"></script>
+    
+    <style type="text/css">
+        * {font-family:sans-serif;}
+        
+        svg .pumpkin { /*can style SVG using SVG properties in CSS */
+            fill: yellow;
+            stroke: orange;
+            stroke-width: 5;
+            }
+            
+    </style>
+    
+</head>
+<body>
+
+<!-- Adding attr(), style() to begin visalizing data for bar chart -->
+<div>
+    <svg width="500" height="50">
+        <rect x="0" y="0" width="500" height="50"/> 
+    </svg>
+</div>
+
+    
+<div>
+    <svg width="250" height="50">
+        <circle cx="150" cy="25" r="25"/>  
+    </svg>
+</div>
+ 
+    
+<div>
+    <svg width="500" height="50">
+        <ellipse cx="250" cy="25" rx="100" ry="25"/>
+    </svg>
+</div>
+  
+    
+<div>
+    <svg width="500" height="50">
+        <line x1="0" y1="0" x2="500" y2="50" stroke="black"/>
+    </svg>
+</div>
+    
+<div>
+    <svg width="500" height="50">
+        <text x="250" y="25">Easy-peasy</text>
+    </svg>
+</div>
+  
+    
+    
+<!-- style SVGs with classes, CSS properties used aren't CSS, but SVG properties -->
+<div>
+    <svg width="500" height="50">
+        <circle cx="25" cy="25" r="22" class="pumpkin"/>
+    </svg>
+</div>  
+    
+    
+
+<!-- order matters and can overlap objects
+    however z-index is not supported with SVG
+
+    This aspect of drawing order becomes important when you have some visual elements that should not be obscured by others. For example, you may have axes or value labels that appear on a scatterplot. The axes and labels should be added to the SVG last, so they appear in front of any other elements.
+   
+-->
+<div>
+    <svg width="500" height="50">
+        <rect x="0" y="0" width="30" height="30" fill="purple"/>
+        <rect x="20" y="5" width="30" height="30" fill="blue"/>
+        <rect x="40" y="10" width="30" height="30" fill="green"/>
+        <rect x="60" y="15" width="30" height="30" fill="yellow"/>
+        <rect x="80" y="20" width="30" height="30" fill="red"/>
+    </svg>
+</div>
+    
+</body>
+</html>

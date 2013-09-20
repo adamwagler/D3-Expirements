@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Getting Started | SVG</title>
+    
+    <script type="text/javascript" src="d3.min.js"></script>
+    
+    <style type="text/css">
+        * {font-family:sans-serif;}
+        p {color: #ccc; font-style: italic; border-bottom: 1px solid #ccc;}
+        
+    </style>
+    
+</head>
+<body>
+<p>Biking Mileage from October 2012 - September 2013</p>
+    
+<!-- Drawing with SVG and D3 -->
+   <script type="text/javascript">
+       
+       var dataset = [ 358, 262, 211, 103, 170, 175, 109, 408, 428, 414, 822, 391 ];
+       
+       // Width and height
+       var w = 800;
+       var h = 250;
+       var xScale = d3.scale.ordinal()
+                        .domain(["Sept", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug"])
+                        .rangeRoundBands([0, w], 0.05);
+       var barPadding = 2;
+       
+       
+       // Create SVG element
+       var svg = d3.select("body")
+                .append("svg")
+                .attr("width", w)
+                .attr("height", h);
+       
+       
+       // A loop that creates rectangles inside the SVG for the number of data in the dataset
+       svg.selectAll("rect")
+            .data(dataset)
+            .enter()
+            .append("rect")
+            .attr("x", function(d, i) {
+                return xScale(i); // flexible spacing based on the dataset amount
+                })
+            .attr("y", function(d){
+                    return h - (d/10); // Height minus data value - divde data values to make them fit
+                })
+            .attr("width", w / dataset.length - barPadding) // determines width based on dataset amout
+            .attr("height", function(d) {
+                    return d/10; // divde data values to make them fit
+                  })
+            .attr("fill", "orange");
+       
+       
+         // Adds in the text -- loop for each number from dataset
+         svg.selectAll("text")
+            .data(dataset)
+            .enter()
+            .append("text")
+            .text(function(d) {
+                return d;
+            })
+            .attr("x", function(d, i) {
+                return i * (w / dataset.length) + (w / dataset.length - barPadding) / 2;
+            })
+            .attr("y", function(d) {
+                return h - (d/10) + 10; 
+            })
+            .attr("font-size", "11px")
+            .attr("fill", "white")
+            .attr("text-anchor", "middle");
+       
+        </script> 
+    
+</body>
+</html>

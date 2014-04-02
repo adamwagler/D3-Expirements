@@ -44,6 +44,16 @@
            
             console.log(data[3].City);
             console.log(data[1]["Company Name"]);
+           
+           
+           
+           var count = {};
+               
+            d3.select(data, function(d){
+                var num = this[5]; // Get number
+                count[num] = count[num]+1 || 1; // Increment counter for each value
+           });
+           console.log(count); // {1: 4, 2: 4, 3: 1, 4: 1}
         
        });
        
